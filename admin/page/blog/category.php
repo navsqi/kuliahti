@@ -5,6 +5,28 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
+        <?php 
+            $notif = isset($_GET['notif']) ? $_GET['notif'] : false;
+            if( $notif == "success"){
+                echo "<div class='alert alert-success alert-dismissable'>
+                        <button aria-hidden='true' data-dismiss='alert' class='close' type='button'>&times;</button>
+                        Kategori berhasil di tambahkan
+                    </div>";
+            }else if($notif == "updated") {
+                echo "<div class='alert alert-success alert-dismissable'>
+                        <button aria-hidden='true' data-dismiss='alert' class='close' type='button'>&times;</button>
+                        Kategori berhasil di update
+                    </div>";
+            }
+
+            $category_edit = isset($_GET['category_edit']) ? $_GET['category_edit'] : false;
+            if($category_edit) {
+                $id_kategori = $category_edit;
+                $queryUpdate = mysqli_query($conn,"SELECT * FROM kategori WHERE id_kategori = $id_kategori");
+                $rowUpdate = mysqli_fetch_assoc($queryUpdate);
+            }
+
+         ?>
         <div class="panel panel-default">
             <div class="panel-heading">
                 Input Data
@@ -12,15 +34,16 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form role="form" action="" method="post">
+                        <form role="form" action="<?php echo ($category_edit) ? BASE_URL.'admin/page/blog/category_update.php' : BASE_URL.'admin/page/blog/category_insert.php' ; ?>" method="post">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input class="form-control" type="text" name="name" />
+                                <input class="form-control" type="text" name="nama" required="required" <?php echo ($category_edit) ? "value='$rowUpdate[nama]'" : false; ?>/>
                             </div>
                             <div class="form-group">
                                 <label>Icon</label>
-                                <input class="form-control" type="text" name="icon" />
+                                <input class="form-control" type="text" name="icon" <?php echo ($category_edit) ? "value='$rowUpdate[icon]'" : false; ?>  />
                             </div>
+                            <?php if($category_edit) echo "<input type='hidden' name='id_kategori' value='$category_edit'>"; ?>
                             <button type="submit" name="submit" class="btn btn-success">Save</button>
                             <button type="reset" class="btn btn-warning">Reset</button>
                         </form>
@@ -44,12 +67,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Kesehatan</td>
-                                <td>glyphicon glyphicon-heart-empty</td>
-                                <td class="center"><a href="index.php?category-update=" class="btn btn-primary btn-xs" type="button">Update</a></td>
-                                <td class="center"><a href="index.php?category-delete=" class="btn btn-primary btn-xs" type="button">Delete</a></td>
-                            </tr>
+                            <?php 
+
+                            $query = mysqli_query($conn,"SELECT * FROM kategori");
+
+                            while($row = mysqli_fetch_assoc($query)){
+                                echo "
+                                    <tr>
+                                        <td>$row[nama]</td>
+                                        <td>$row[icon]</td>
+                                        <td class='center'><a href='index.php?category_edit=$row[id_kategori]' class='btn btn-primary btn-xs' type='button'>Update</a></td>
+                                        <td class='center'><a href='".BASE_URL."admin/page/blog/category_delete.php?=$row[id_kategori]' class='btn btn-primary btn-xs' type='button'>Delete</a></td>
+                                    </tr>
+                                ";
+                            }
+
+                             ?>
                         </tbody>
                     </table>
                 </div>
