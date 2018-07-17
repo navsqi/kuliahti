@@ -27,7 +27,10 @@
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea class="form-control" rows="3" name="description"></textarea>
+                                <textarea id="ckeditor" class="form-control" rows="3" name="description"></textarea>
+                                <script>
+                                    CKEDITOR.replace('ckeditor');
+                                </script>
                             </div>
                             <div class="form-group">
                                 <label>Image</label>
