@@ -1,3 +1,18 @@
+<?php 
+
+    session_start();
+
+    $id_user = isset($_SESSION['id_user']) ? $_SESSION['id_user'] : false;
+    $username =  isset($_SESSION['username']) ? $_SESSION['username'] : false;
+
+    if($id_user){
+        include("../function/helper.php");
+        header("location:".BASE_URL."admin/index.php");
+    }
+
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,13 +32,20 @@
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="post">
+                        <form role="form" method="post" action="login_proccess.php">
                             <fieldset>
                             
-                                <div class="alert alert-danger alert-dismissable">
-                                    <button aria-hiden="true" data-dismiss="alert" class="close" type="button">&times;</button>
-                                    Username atau Password Anda Salah. Silakan hubungi Administrator.
-                                </div>
+                                <?php 
+                                    if(isset($_GET['notif']) == "failed"){
+                                ?>
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <button aria-hiden="true" data-dismiss="alert" class="close" type="button">&times;</button>
+                                         Username atau Password Anda Salah. Silakan hubungi Administrator.
+                                    </div>
+                                <?php
+                                    }
+
+                                 ?>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Username" name="username" type="text" autofocus="autofocus" />
                                 </div>

@@ -8,8 +8,8 @@
   $(function () {
     $("#datatables").DataTable({
         "columnDefs": [
-            { "searchable": false, "targets": [2,3] },
-            { "orderable": false, "targets": [2,3] }
+            { "searchable": false, "targets": [4,5] },
+            { "orderable": false, "targets": [4,5] }
           ]
     });
   }); 

@@ -319,3 +319,7 @@ table.dataTable thead .sorting:after {
 .show-grid {
     margin: 15px 0;
 }
+
+img.post-image {    
+    margin-top: 10px !important; 
+}

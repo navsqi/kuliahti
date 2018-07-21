@@ -5,6 +5,7 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
+        <!-- NOTIFIKASI -->
         <?php 
             $notif = isset($_GET['notif']) ? $_GET['notif'] : false;
             if( $notif == "success"){
@@ -15,10 +16,16 @@
             }else if($notif == "updated") {
                 echo "<div class='alert alert-success alert-dismissable'>
                         <button aria-hidden='true' data-dismiss='alert' class='close' type='button'>&times;</button>
-                        Kategori berhasil di update
+                        Kategori berhasil di perbaharui
+                    </div>";
+            }else if($notif == "deleted") {
+                echo "<div class='alert alert-success alert-dismissable'>
+                        <button aria-hidden='true' data-dismiss='alert' class='close' type='button'>&times;</button>
+                        Kategori berhasil di hapus
                     </div>";
             }
 
+            // EDIT KATEGORI
             $category_edit = isset($_GET['category_edit']) ? $_GET['category_edit'] : false;
             if($category_edit) {
                 $id_kategori = $category_edit;
@@ -77,7 +84,7 @@
                                         <td>$row[nama]</td>
                                         <td>$row[icon]</td>
                                         <td class='center'><a href='index.php?category_edit=$row[id_kategori]' class='btn btn-primary btn-xs' type='button'>Update</a></td>
-                                        <td class='center'><a href='".BASE_URL."admin/page/blog/category_delete.php?=$row[id_kategori]' class='btn btn-primary btn-xs' type='button'>Delete</a></td>
+                                        <td class='center'><a href='".BASE_URL."admin/page/blog/category_delete.php?id_kategori=$row[id_kategori]' class='btn btn-primary btn-xs' type='button'>Delete</a></td>
                                     </tr>
                                 ";
                             }
