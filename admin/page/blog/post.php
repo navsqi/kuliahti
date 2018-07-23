@@ -87,7 +87,7 @@
                                 <label>Image</label>
                                 <input type="file" name="gambar" />
                                 <input type="hidden" name="nama_gambar" value="<?php echo $rowUpdate['gambar']; ?>">
-                                <?php echo ($queryUpdate) ? "<img class='post-image' width='100' src='".BASE_URL."images/$rowUpdate[gambar]'" : false; ?> 
+                                <?php echo ($queryUpdate) ? "<img class='post-image' width='100' src='".BASE_URL."images/$rowUpdate[gambar]'/>" : false; ?> 
                             </div>
                             <div class="form-group">
                                 <label style="display: block;">Status</label>
@@ -102,7 +102,7 @@
                 </div>
             </div>
         </div>
-        <?php if($queryUpdate) echo "</div>"; ?>
+        
         <div class="panel panel-default">
             <div class="panel-heading">
                 List Data

@@ -1,9 +1,10 @@
 <?php 
 
+include "function/connection.php"; 
+include "function/helper.php"; 
 ob_start();
 
 include "includes/head.php"; 
-
 
 ?>
   <body>
@@ -17,6 +18,7 @@ include "includes/head.php";
             <div class="col-md-8">
               <?php
                 if (isset($_GET["home"])) {include "includes/latest-post.php";}
+                else if (isset($_GET["page"])) {include "includes/latest-post.php";}
                 else if (isset($_GET["detail"])) {include "includes/detail.php";}
                 else {include "includes/latest-post.php";}
               ?>

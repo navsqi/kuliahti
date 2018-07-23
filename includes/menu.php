@@ -14,9 +14,9 @@
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left" role="search" method="get" action="<?php BASE_URL."index.php" ?>">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Cari...">
+          <input type="text" name="search" class="form-control" placeholder="Cari...">
         </div>
         <button type="submit" class="btn btn-default">Cari</button>
       </form>
@@ -24,9 +24,17 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Kategori Berita <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="index.php?category"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> Musik</a></li>
-            <li><a href="index.php?category"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> Kesehatan</a></li>
-            <li><a href="index.php?category"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Teknologi</a></li>
+            <?php
+
+              $query = mysqli_query($conn,"SELECT * FROM kategori ORDER BY nama ASC");
+
+              while($row = mysqli_fetch_assoc($query)){
+
+            ?>
+            <li><a href="index.php?category=<?php echo $row['id_kategori'].'&nama='.slugify($row['nama']); ?>">
+              <span class="<?php echo $row['icon']; ?>" aria-hidden="true"> </span> <?php echo $row['nama']; ?></a>
+            </li>
+            <?php } ?>
           </ul>
         </li>
       </ul>
