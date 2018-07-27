@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2018 at 10:57 AM
+-- Generation Time: Jul 27, 2018 at 10:09 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -74,11 +74,11 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`id_kategori`, `nama`, `icon`) VALUES
-(1, 'Programming', 'glyphicon glyphicons-compass'),
+(1, 'Programming', 'glyphicon glyphicon-th-large'),
 (2, 'Kesehatan', 'glyphicon glyphicon-heart-empty'),
-(3, 'Hukum', 'glyphicons glyphicons-law-justice'),
-(4, 'Hardware', 'glyphicons glyphicons-print'),
-(5, 'Software', 'glyphicons glyphicons-fingerprint-scan');
+(3, 'Hukum', 'glyphicon glyphicon-pawn'),
+(4, 'Hardware', 'glyphicon glyphicon-cog'),
+(5, 'Software', 'glyphicon glyphicon-stats');
 
 -- --------------------------------------------------------
 
@@ -101,7 +101,10 @@ CREATE TABLE `komentar` (
 
 INSERT INTO `komentar` (`id_komentar`, `artikel_id`, `user`, `reply`, `tanggal`, `status`) VALUES
 (1, 1, 'Franky', 'Mantap gan, sangat bermanfaat', '2018-07-27', 1),
-(2, 2, 'Sanji', 'Wah keren banget, idaman nih', '2018-07-27', 1);
+(2, 2, 'Sanji', 'Wah keren banget, idaman nih', '2018-07-27', 1),
+(3, 3, 'Nauval', 'Bermanfaat untuk kesehatan tubuh kita', '2018-07-27', 0),
+(4, 4, 'Shidqi', 'Hukum di Indonesia jangan tumpul ke atas dan tajam ke bawah', '2018-07-27', 0),
+(19, 8, 'Temon', 'Waw lucu ya', '2018-07-27', 0);
 
 -- --------------------------------------------------------
 
@@ -175,7 +178,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `user`

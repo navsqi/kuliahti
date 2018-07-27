@@ -10,8 +10,8 @@
             $row = mysqli_fetch_assoc($query);
 
            ?>
-          <li><a href="#">Home</a></li>
-          <li><a href="#"><?php echo $row['nama']; ?></a></li>
+          <li><a href="<?php echo BASE_URL; ?>">Home</a></li>
+          <li><a href="<?php echo BASE_URL.'index.php?category='.$row['kategori_id']; ?>"><?php echo $row['nama']; ?></a></li>
           <li class="active"><?php echo $row['judul']; ?></li>
         </ol>
         <div class="social-button">
@@ -46,25 +46,31 @@
     <!-- Komentar -->
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 12 Komentar</h3>
+        <?php 
+
+          $queryKomentar = mysqli_query($conn,"SELECT * FROM komentar WHERE status = 1 AND artikel_id = $id_artikel ");
+          $totalKomentar = mysqli_num_rows($queryKomentar);
+
+         ?>
+        <h3 class="panel-title"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <?php echo $totalKomentar; ?> Komentar</h3>
       </div>
       <div class="panel-body">
         <ul class="list-group">
+          <?php 
+
+            $queryKomentar = mysqli_query($conn,"SELECT * FROM komentar WHERE status = 1 AND artikel_id = $id_artikel ");
+            while($rowKomentar = mysqli_fetch_assoc($queryKomentar)){
+
+          ?>
           <li class="list-group-item">
-            <strong>Alissa</strong>: Many desktop publishing packages and web page editors now use.
+            <strong><?php echo $rowKomentar['user'] ?></strong>: <?php echo $rowKomentar['reply'] ?>
           </li>
-          <li class="list-group-item">
-            <strong>Chelsea</strong>: All the Lorem Ipsum generators on the Internet tend to repeat predefined.
-          </li>
-          <li class="list-group-item">
-            <strong>Nagita</strong>: It uses a dictionary of over 200 Latin words, combined with.
-          </li>
-          <li class="list-group-item">
-            <strong>Ariel</strong>: The generated Lorem Ipsum is therefore always free from repetition.
-          </li>
-          <li class="list-group-item">
-            <strong>Marsha</strong>: The standard chunk of Lorem Ipsum used since the 1500s is reproduced below. It uses a dictionary of over 200 Latin words, combined with.
-          </li>
+
+          <?php 
+
+            }
+
+           ?>
         </ul>
       </div>
     </div>
@@ -75,25 +81,41 @@
         <h3 class="panel-title"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Komentar</h3>
       </div>
       <div class="panel-body">
-        <form class="form-horizontal">
+        <form class="form-horizontal" method="POST" action="<?php echo BASE_URL.'includes/detail_komentar_proccess.php'; ?>">
           <div class="form-group">
             <label for="inputNama3" class="col-sm-2 control-label">Nama</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputNama3">
+              <input type="text" class="form-control" name="user" id="inputNama3" required="required">
             </div>
           </div>
           <div class="form-group">
-            <label for="inputPesan3" class="col-sm-2 control-label">Pesan</label>
+            <label for="inputPesan3"  class="col-sm-2 control-label">Pesan</label>
             <div class="col-sm-10">
-              <textarea class="form-control" rows="3"></textarea>
+              <textarea class="form-control" name="reply" rows="3" required="required"></textarea>
             </div>
           </div>
+            <input type="hidden" name="artikel_id" value="<?php echo $id_artikel; ?>">
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-default">Kirim</button>
+              <button name="submit" type="submit" class="btn btn-default">Kirim</button>
             </div>
           </div>
         </form>
+        <?php 
+
+            $notif = isset($_GET['comment']) ? $_GET['comment'] : false;
+
+            if( $notif == "success"){
+                echo "<div id='comment-success' class='alert alert-success alert-dismissable'>
+                        <button aria-hidden='true' data-dismiss='alert' class='close' type='button'>&times;</button>
+                        Terimakasih, komentar anda sedang di moderasi
+                    </div>";
+            }
+
+
+         ?>
       </div>
     </div>
 </article>
+
+

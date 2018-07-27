@@ -42,7 +42,7 @@ $end_number = ($page < ($total_pages - $total_pages)) ? $page + $total_number : 
 <nav class="text-center">
   <ul class="pagination">
     <li>
-      <a href="<?php echo BASE_URL."index.php?page=1"; ?> aria-label="Previous">
+      <a href="<?php echo BASE_URL.'index.php?page=1'; ?>" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
