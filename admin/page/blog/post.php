@@ -109,7 +109,7 @@
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table id="datatables" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <table id="datatables" class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>Category</th>
@@ -141,6 +141,17 @@
                             ?>
                         </tbody>
                     </table>
+                    <!-- DATA TABLE SCRIPT -->
+                    <script type="text/javascript">
+                      $(function () {
+                        $("#datatables").DataTable({
+                            "columnDefs": [
+                                { "searchable": false, "targets": [4,5] },
+                                { "orderable": false, "targets": [4,5] }
+                              ]
+                        });
+                      }); 
+                    </script>
                 </div>
             </div>
         </div>

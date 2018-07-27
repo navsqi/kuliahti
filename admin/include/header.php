@@ -15,7 +15,7 @@
             </a>
             <ul class="dropdown-menu dropdown-user">
                 <li><a href="index.php?administrator"><i class="fa fa-user fa-fw"></i> Administrator</a></li>
-                <li><a href="<?php echo BASE_URL; ?>"><i class="fa fa-globe fa-fw"></i> Visit Website</a></li>
+                <li><a target="blank" href="<?php echo BASE_URL; ?>"><i class="fa fa-globe fa-fw"></i> Visit Website</a></li>
                 <li class="divider"></li>
                 <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
