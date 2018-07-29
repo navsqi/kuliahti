@@ -7,12 +7,12 @@
     		<ul>
                 <?php 
 
-                    $queryKomentar = mysqli_query($conn,"SELECT * FROM komentar WHERE status = 1 ORDER BY id_komentar DESC LIMIT 4 ");
+                    $queryKomentar = mysqli_query($conn,"SELECT komentar.*,artikel.slug FROM komentar JOIN artikel ON komentar.artikel_id = artikel.id_artikel WHERE komentar.status = 1 ORDER BY komentar.id_komentar DESC LIMIT 4 ");
                     while($rowKomentar = mysqli_fetch_assoc($queryKomentar)){
 
                  ?>
 
-    		    <li><a href="index.php?detail=<?php echo $rowKomentar['artikel_id']; ?>"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 
+    		    <li><a href="<?php echo BASE_URL.$rowKomentar['artikel_id'].'/'.$rowKomentar['slug'].'.html'; ?>"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 
                     <strong><?php echo $rowKomentar['user']; ?></strong>: <?php echo $rowKomentar['reply']; ?></a></li>
 
                 <?php
@@ -39,7 +39,7 @@
 
                  ?>
 
-                <li><a href="index.php?detail=<?php echo $rowArtikel['id_artikel']; ?>"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> 
+                <li><a href="<?php echo BASE_URL.$rowArtikel['id_artikel'].'/'.$rowArtikel['slug'].'.html'; ?>"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> 
                     <?php echo $rowArtikel['judul']; ?></a></li>
 
                 <?php

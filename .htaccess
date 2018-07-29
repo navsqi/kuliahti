@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^/]*)/([^/]*)\.html$ index.php?detail=$1&title=$2 [L]
+RewriteRule ^category/([^/]*)/([^/]*)\.html$ index.php?category=$1&nama=$2 [L]

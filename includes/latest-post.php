@@ -29,11 +29,11 @@ $end_number = ($page < ($total_pages - $total_pages)) ? $page + $total_number : 
    ?>
   <div class="row latest-post">
     <div class="col-md-3">
-      <img src="<?php echo "images/".$row['gambar']; ?>" class="img-responsive btn-block">
+      <img src="<?php echo BASE_URL."images/".$row['gambar']; ?>" class="img-responsive btn-block">
     </div>
     <div class="col-md-9">
-      <h2><a href="index.php?detail=<?php echo $row['id_artikel'].'&title='.$row['slug']; ?>"><?php echo $row['judul']; ?></a></h2>
-      <div class="meta"><a href="#"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> <?php echo $row['nama']; ?></a> - <?php echo tanggal_indonesia($row['tanggal']); ?></div>
+      <h2><a href="<?php echo BASE_URL.$row['id_artikel'].'/'.$row['slug'].'.html'; ?>"><?php echo $row['judul']; ?></a></h2>
+      <div class="meta"><a href="<?php echo BASE_URL.'category/'.$row['kategori_id'].'/'.slugify($row['nama']).'.html'; ?>"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> <?php echo $row['nama']; ?></a> - <?php echo tanggal_indonesia($row['tanggal']); ?></div>
       <p><?php echo substr(strip_tags($row['deskripsi']), 0,130)."..."; ?></p>
     </div>
   </div>

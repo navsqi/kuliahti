@@ -14,7 +14,7 @@
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left" role="search" method="get" action="<?php BASE_URL."index.php" ?>">
+      <form class="navbar-form navbar-left" role="search" method="get" action="<?php echo BASE_URL."index.php" ?>">
         <div class="form-group">
           <input type="text" name="search" class="form-control" placeholder="Cari...">
         </div>
@@ -31,7 +31,7 @@
               while($row = mysqli_fetch_assoc($query)){
 
             ?>
-            <li><a href="index.php?category=<?php echo $row['id_kategori'].'&nama='.slugify($row['nama']); ?>">
+            <li><a href="<?php echo BASE_URL.'category/'.$row['id_kategori'].'/'.slugify($row['nama']).'.html'; ?>">
               <span class="<?php echo $row['icon']; ?>" aria-hidden="true"> </span> <?php echo $row['nama']; ?></a>
             </li>
             <?php } ?>

@@ -3,6 +3,7 @@
         <ol class="breadcrumb">
           <?php 
 
+            $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             $id_artikel = isset($_GET['detail']) ? $_GET['detail'] : false;
             $query = mysqli_query($conn,"SELECT artikel.*,kategori.nama FROM artikel JOIN kategori WHERE artikel.kategori_id = kategori.id_kategori
                                           AND id_artikel = $id_artikel;
@@ -17,22 +18,22 @@
         <div class="social-button">
           <!-- Untuk Facebook -->
           <a href="http://www.facebook.com/sharer.php?u=<?php echo $_SERVER['REQUEST_URI']; ?>" target="_blank">
-              <img src="images/social/facebook.png" alt="facebook" width="30px" />
+              <img src="<?php echo BASE_URL; ?>images/social/facebook.png" alt="facebook" width="30px" />
           </a>
           
           <!-- Untuk Google+ -->
           <a href="https://plus.google.com/share?url=<?php echo $_SERVER['REQUEST_URI']; ?>" target="_blank">
-              <img src="images/social/google-plus.png" alt="google-plus" width="30px" />
+              <img src="<?php echo BASE_URL; ?>images/social/google-plus.png" alt="google-plus" width="30px" />
           </a>
           
           <!-- Untuk Twitter -->
           <a href="https://twitter.com/share?url=<?php echo $_SERVER['REQUEST_URI']; ?>" target="_blank">
-              <img src="images/social/twitter.png" alt="twitter" width="30px" />
+              <img src="<?php echo BASE_URL; ?>images/social/twitter.png" alt="twitter" width="30px" />
           </a>
         </div>
     </div>
     <h1><?php echo $row['judul']; ?></h1>
-    <img src="images/<?php echo $row['gambar']; ?>" class="img-responsive btn-block">
+    <img src="<?php echo BASE_URL; ?>images/<?php echo $row['gambar']; ?>" class="img-responsive btn-block">
     <p><?php echo $row['deskripsi']; ?></p>
 
     <div class="pagination" id="tag">
@@ -116,7 +117,7 @@
                         Terimakasih, komentar anda sedang di moderasi
                     </div>";
             }else if($notif == "failed") {
-                echo "<div id='comment-danger' class='alert alert-danger alert-dismissable'>
+                echo "<div id='comment-failed' class='alert alert-danger alert-dismissable'>
                         <button aria-hidden='true' data-dismiss='alert' class='close' type='button'>&times;</button>
                         Komentar gagal, silahkan cek kembali !
                     </div>";

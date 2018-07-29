@@ -36,14 +36,14 @@ if (isset($_POST['submit']))
         {
         	// jika response gagal
             $success = false;
-            header("location:".BASE_URL."index.php?detail=".$artikel_id."&comment=failed#comment-success");
+            header("location:".BASE_URL."index.php?detail=".$artikel_id."&comment=failed#comment-failed");
         }
     }
     else
     {
     	// jika tidak ada response / gagal
         $success = false;
-        header("location:".BASE_URL."index.php?detail=".$artikel_id."&comment=failed#comment-success");
+        header("location:".BASE_URL."index.php?detail=".$artikel_id."&comment=failed#comment-failed");
     }
 }
 
