@@ -77,7 +77,7 @@
                             <div class="form-group">
                                 <label>Description</label>
                                 <textarea id="ckeditor" class="form-control" rows="3" name="deskripsi">
-                                    <?php echo ($queryUpdate) ? $rowUpdate['deskripsi'] : false; ?>
+                                    <?php echo ($queryUpdate) ? htmlspecialchars($rowUpdate['deskripsi']) : false; ?>
                                 </textarea>
                                 <script>
                                     CKEDITOR.replace('ckeditor');

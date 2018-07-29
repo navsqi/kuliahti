@@ -10,14 +10,16 @@
                 Notifications
             </div>
             <div class="panel-body">
+            <?php 
+
+            if(isset($_GET['notif']) == "comment_approved"){
+
+             ?>
                 <div class="alert alert-success alert-dismissable">
                     <button aria-hidden="true" data-dismiss="alert" class="close" type="button">&times;</button>
-                    Approve Comment Berhasil.
+                    Approve Comment Berhasil di Setujui
                 </div>
-                <div class="alert alert-danger alert-dismissable">
-                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">&times;</button>
-                    Approve Comment Gagal.
-                </div>
+            <?php } ?>
             </div>
         </div>
         <div class="panel panel-default">
@@ -37,13 +39,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Membuat Paging Di PHP MySQL</td>
-                                <td>Rully Febrian</td>
-                                <td>Saat ini saya sedang belajar PHP MySQL di DUMET School.</td>
-                                <td class="center">30 Agustus 2015</td>
-                                <td class="center"><a href="index.php?comment-approve=" class="btn btn-primary btn-xs" type="button">Approve</a></td>
-                            </tr>
+                            <?php 
+
+                                $query = mysqli_query($conn,"SELECT komentar.*,artikel.id_artikel,artikel.judul FROM komentar JOIN artikel ON 
+                                                        komentar.artikel_id = artikel.id_artikel WHERE komentar.status = 0 ORDER BY komentar.id_komentar DESC");
+                                while($row = mysqli_fetch_assoc($query)){
+                                    $status = ($row['status'] == 1) ? "On" : "Off";
+                                    echo "<tr>
+                                        <td>$row[judul]</td>
+                                        <td>$row[user]</td>
+                                        <td>$row[reply]</td>
+                                        <td>".tanggal_indonesia($row['tanggal'])."</td>
+                                        <td class='center'><a href='".BASE_URL."admin/page/home/approve_comment.php?id_komentar=$row[id_komentar]' class='btn btn-success btn-xs' type='button'>Approve</a></td> 
+                                        </tr>   
+                                    ";
+                                }
+
+
+                            ?>
                         </tbody>
                     </table>
                 </div>

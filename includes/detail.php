@@ -94,6 +94,11 @@
               <textarea class="form-control" name="reply" rows="3" required="required"></textarea>
             </div>
           </div>
+          <div class="form-group">
+            <div class="col-sm-10 col-md-offset-2">
+              <div class="g-recaptcha" data-sitekey="6LfKB2cUAAAAAAoh18m-HBnYmjgwRkWQabNKYeTF"></div>
+            </div>
+          </div>
             <input type="hidden" name="artikel_id" value="<?php echo $id_artikel; ?>">
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
@@ -110,6 +115,11 @@
                         <button aria-hidden='true' data-dismiss='alert' class='close' type='button'>&times;</button>
                         Terimakasih, komentar anda sedang di moderasi
                     </div>";
+            }else if($notif == "failed") {
+                echo "<div id='comment-danger' class='alert alert-danger alert-dismissable'>
+                        <button aria-hidden='true' data-dismiss='alert' class='close' type='button'>&times;</button>
+                        Komentar gagal, silahkan cek kembali !
+                    </div>";
             }
 
 
@@ -117,5 +127,6 @@
       </div>
     </div>
 </article>
+
 
 

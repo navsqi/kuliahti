@@ -7,7 +7,7 @@ include("../../../function/helper.php");
 if(isset($_POST['submit'])){
 	$id_kategori = $_POST['id_kategori'];
 	$judul = $_POST['judul'];
-	$deskripsi = $_POST['deskripsi'];
+	$deskripsi = addslashes($_POST['deskripsi']);
 	$tanggal = date("Y-m-d H:i:s");
 	$status = $_POST['status'];
 	$slug = slugify($judul);

@@ -31,10 +31,9 @@ function tanggal_indonesia($date)
     $thn   = substr($date, 0, 4);
     $bln   = substr($date, 5, 2);
     $tgl   = substr($date, 8, 2);
-    $waktu = substr($date, 11, 5);
     $hr    = date("w", strtotime($date));
     
-    $result = $hari[$hr] . ", " . $tgl . " " . $bulan[(int) $bln - 1] . ' ' . $thn . ' ' . $waktu . ' WIB';
+    $result = $hari[$hr] . ", " . $tgl . " " . $bulan[(int) $bln - 1] . ' ' . $thn ;
     return $result;
 }
 

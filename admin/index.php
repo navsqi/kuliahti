@@ -29,6 +29,7 @@
             else if (isset($_GET["post"])) include("page/blog/post.php");
             else if (isset($_GET["post_edit"])) include("page/blog/post.php");
             else if (isset($_GET["comment"])) include("page/blog/comment.php");
+            else if (isset($_GET["comment_edit"])) include("page/blog/comment.php");
             else if (isset($_GET["user"])) include("page/user/index.php");
             else if (isset($_GET["administrator"])) include("page/administrator/index.php");
             else include("page/home/index.php");

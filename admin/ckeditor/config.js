@@ -36,6 +36,6 @@ CKEDITOR.editorConfig = function( config ) {
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 
-	config.extraPlugins = 'dialog,widget,codesnippet,colorbutton,panelbutton';
+	config.extraPlugins = 'codesnippet,dialog,widget,colorbutton,panelbutton';
 	config.codeSnippet_theme = 'monokai_sublime';
 };

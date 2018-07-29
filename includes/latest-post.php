@@ -34,7 +34,7 @@ $end_number = ($page < ($total_pages - $total_pages)) ? $page + $total_number : 
     <div class="col-md-9">
       <h2><a href="index.php?detail=<?php echo $row['id_artikel'].'&title='.$row['slug']; ?>"><?php echo $row['judul']; ?></a></h2>
       <div class="meta"><a href="#"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> <?php echo $row['nama']; ?></a> - <?php echo tanggal_indonesia($row['tanggal']); ?></div>
-      <p><?php echo substr($row['deskripsi'], 0,130)."..."; ?></p>
+      <p><?php echo substr(strip_tags($row['deskripsi']), 0,130)."..."; ?></p>
     </div>
   </div>
   <?php } ?>

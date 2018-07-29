@@ -7,7 +7,7 @@
     		<ul>
                 <?php 
 
-                    $queryKomentar = mysqli_query($conn,"SELECT * FROM komentar WHERE status = 1");
+                    $queryKomentar = mysqli_query($conn,"SELECT * FROM komentar WHERE status = 1 ORDER BY id_komentar DESC LIMIT 4 ");
                     while($rowKomentar = mysqli_fetch_assoc($queryKomentar)){
 
                  ?>
